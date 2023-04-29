@@ -57,13 +57,14 @@ a {
     left: 0px;
     height: 100vh;
     width: 75vw;
-    background-color: aliceblue; }
+    background-color: white;
+    border-right: 1px solid #8080805e; }
     .contenedor-header .contenido-hamburguesa .div-hambur {
       width: 100%; }
       .contenedor-header .contenido-hamburguesa .div-hambur .header-hamburguesa {
         justify-content: space-between;
         padding: 1rem;
-        border-bottom: 1px solid #edcfc3; }
+        border-bottom: 1px solid #8080805e; }
       .contenedor-header .contenido-hamburguesa .div-hambur .contenedor-categorias {
         display: flex;
         flex-direction: column;
