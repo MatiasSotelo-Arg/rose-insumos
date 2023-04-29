@@ -1,0 +1,70 @@
+.contenedor-header {
+    background-color: $color-header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 1rem;
+
+    .contenido-hamburguesa, .contenido-carrito {
+        display: none;
+    }
+
+    .header-hamburguesa, .header-carrito {
+        display: flex;
+        font-size: 1.3rem;
+        .btn-cerrar-hambur {
+            background-color: transparent;
+            color: $color-header;
+            // padding: 0.1rem 0.5rem;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.3rem;
+        }
+    }
+
+    .contenido-hamburguesa {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        height: 100vh;
+        width: 75vw;
+        background-color: aliceblue;
+        .div-hambur {
+            width: 100%;            
+            .header-hamburguesa {
+                justify-content: space-between;
+                padding: 1rem;
+                border-bottom: 1px solid $letra-header;
+            }
+
+            .contenedor-categorias {
+                display: flex;
+                flex-direction: column;
+                padding: 1rem;
+                .categoria {
+                    display: flex;
+                    flex-direction: column;
+                    .titulo-categoria {
+                        padding-top: 1rem;
+                        padding-left: 1rem;
+                        font-size: 1.2rem;
+                        color: $color-header;
+                    }
+                }
+                .catego {
+                    margin-top: 1rem;
+                    font-size: 1.2rem;
+                    color: black;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .contenedor-logo {
+        color: $letra-header;
+        .logo-img {
+            width: 30vw;
+        }
+    }
+}
