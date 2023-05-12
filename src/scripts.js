@@ -19,23 +19,107 @@ function funcionalidadHamburguesa () {
     toggleContenedor(contenedorHamburguesa, btnHamburguesa, btnCerrarHamburguesa);
     toggleContenedor(contenedorCarrito, btnCarrito, btnCerrarCarrito);
 
+    return contenedorHamburguesa;
 }
 
-funcionalidadHamburguesa();
+const x = funcionalidadHamburguesa();
 
 // agrega categorias 
-const categoria = ["Pestañas","Uñas","Maquillaje","Organizador","Maquinas"];
 
-function agregarCategorias() {
+const categorias = [];
+
+function estableceCatalogo () {
+  
+  let id = 0;
+  
+  catalogo.forEach( prod => {
+      if(!categorias.find(catego => catego.categoria === prod.categoria)) {
+        categorias.push({categoria: prod.categoria, img: prod.imagen, id: id})
+      }
+      id++;
+  })
+  
+  console.log(categorias)
+  return categorias;
+}
+
+estableceCatalogo();
+
+
+// agrega categorias al menu
+const contenedorProductos = document.querySelector(".contenedor-productos");
+
+function agregarCategoriasMenu() {
     const contCategoria = document.querySelector(".categoria");
 
-    categoria.forEach( prod => {
+    categorias.forEach( prod => {
       const categoriaInfo = document.createElement("a");
       categoriaInfo.href = "#";
+      categoriaInfo.id = `id-${prod.id}`
       categoriaInfo.classList.add("titulo-categoria");
-      categoriaInfo.innerHTML = `- ${prod}`;
+      categoriaInfo.innerHTML = `- ${prod.categoria}`;
       contCategoria.appendChild(categoriaInfo);
+    
+      const btnId = document.querySelector(`#id-${prod.id}`);
+    
+      // Funcionalidad botones del menu
+      btnId.addEventListener("click", function() {
+
+        x.style.display = "none";
+
+        // agregaProductosCategoria
+        function agregarProductosCategoria () {
+          let codificarCategoria = categorias[prod.id].categoria;
+
+          const mostrarProductos = catalogo.filter(prod => prod.categoria ===  codificarCategoria)
+  
+          console.log(`click ${prod.id}`)
+
+          return mostrarProductos;
+        }
+        
+        const producto = agregarProductosCategoria();
+
+        // crea cabecera categoria 
+        const headerCategoDom = document.createElement("div");
+        headerCategoDom.classList.add("cont-categoria");
+        headerCategoDom.innerHTML = `
+          <h2>${prod.categoria}</h2>
+          <button class="btn-cerrar-categoria" type="button">X</button>
+        `
+        contenedorProductos.appendChild(headerCategoDom);
+        
+        //muestra los productos en el dom
+        function muestraProductosDom() {} {
+          producto.forEach(p => {
+            const contProducto = document.createElement("div");
+
+            contProducto.innerHTML += `
+              <div class="card-produco"> 
+                <h2>${p.nombreProducto}</h2>
+              </div>
+            `
+            
+            console.log(p.categoria)
+            
+            contenedorProductos.appendChild(contProducto);
+            contenedorProductos.style.border = '1px solid #8080805e';
+
+          })
+        }
+        
+         muestraProductosDom();
+        
+        // cerrar cabecera categoria
+        const btnCerrarCatego = document.querySelector(".btn-cerrar-categoria");
+        btnCerrarCatego.addEventListener("click", function() {
+          contenedorProductos.innerHTML = '';
+          contenedorProductos.style.border = 'none';
+        })
+
+      })
+
     })    
 }
 
-agregarCategorias();
+agregarCategoriasMenu();

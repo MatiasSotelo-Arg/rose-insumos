@@ -30,4 +30,17 @@
             text-align: center;
         }
     }
+
+    .contenedor-productos {
+        position: absolute;
+        background-color: white;
+        top: 0;
+        margin: 1rem;
+        height: 100vh;
+        
+        .cont-categoria {
+            display: flex;
+            justify-content: space-around;
+        }
+    }
 }
