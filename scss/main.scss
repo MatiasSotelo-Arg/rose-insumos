@@ -38,11 +38,25 @@
         top: 0;
         width: 100vw;
         height: 100vh;
-        
+        overflow-y: auto;
         .cont-categoria {
             display: flex;
             justify-content: space-around;
         }
+
+        .cont-productos {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+
+            .card-producto {
+                .card-img {
+                    width: 100%;
+                    height: 15.625rem;
+                }
+            }
+        }
+
+       
     }
 
     .cont-principal-categorias {

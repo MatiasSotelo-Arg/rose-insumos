@@ -45,6 +45,7 @@ function estableceCatalogo () {
 
 estableceCatalogo();
 
+const carrito = [];
 
 // agrega categorias al menu
 const contenedorProductos = document.querySelector(".contenedor-productos");
@@ -70,14 +71,19 @@ function agregarCategoriasMenu() {
         x.style.display = "none";
 
         // agregaProductosCategoria
-        function agregarProductosCategoria () {
+        let contadorID = 0; 
+
+        function agregarProductosCategoria() {
           let codificarCategoria = categorias[prod.id].categoria;
-
-          const mostrarProductos = catalogo.filter(prod => prod.categoria ===  codificarCategoria)
-  
-          console.log(`click ${prod.id}`)
-
-          return mostrarProductos;
+        
+          const mostrarProductos = catalogo.filter(prod => prod.categoria === codificarCategoria);
+        
+          console.log(`click ${prod.id}`);
+        
+          // Asignar un ID único a los productos filtrados
+          const productosConID = mostrarProductos.map(prod => ({ ...prod, id: contadorID++ }));
+        
+          return productosConID;
         }
         
         const producto = agregarProductosCategoria();
@@ -93,19 +99,54 @@ function agregarCategoriasMenu() {
         
         //muestra los productos en el dom
         function muestraCategoriasMenu() {} {
+
+          const contProductos = document.createElement("div");
+          contProductos.classList.add("cont-productos");
+
+          contenedorProductos.appendChild(contProductos);
+
           producto.forEach(p => {
             const contProducto = document.createElement("div");
+            contProducto.classList.add("card-producto");
 
             contProducto.innerHTML += `
-              <div class="card-produco"> 
+
+                <img class="card-img"src="assets/img/productos-img/${p.imagen}.jpg" alt="pestañas y cejas"> 
                 <h2>${p.nombreProducto}</h2>
-              </div>
+                <p>$${p.precio}.00 </p>
+                <div>
+                  <input type="number" value="1" id="cant-${p.id}">
+                  <button type="button" id="id-${p.id}">Agregar</button> 
+                   
+                </div>
+
             `
             
-            console.log(p.categoria)
-            
-            contenedorProductos.appendChild(contProducto);
+            contProductos.appendChild(contProducto);
             contenedorProductos.style.border = '1px solid #8080805e';
+
+            const btnAgregarCarrito = contProductos.querySelector(`#id-${p.id}`);
+
+            btnAgregarCarrito.addEventListener('click', function() {
+
+              const cantidad = parseInt(contProductos.querySelector(`#cant-${p.id}`).value);
+             
+              if (!isNaN(cantidad) && cantidad > 0) {
+                // Verificar si el producto ya está en el carrito
+                const productoExistente = carrito.some(item => item.id === p.id);
+            
+                productoExistente
+                  ? carrito.forEach(item => {
+                      if (item.id === p.id) {
+                        item.cantidad += cantidad;
+                      }
+                    })
+                  : carrito.push({ ...p, cantidad });
+            
+                console.log(carrito);
+              }
+
+            })
 
           })
         }
@@ -171,24 +212,62 @@ categorias.forEach(prod => {
       `
       contenedorProductos.appendChild(headerCategoDom);
       
+  
       //muestra los productos en el dom
       function muestraCategoriasMenu() {} {
-        producto.forEach(p => {
-          const contProducto = document.createElement("div");
 
-          contProducto.innerHTML += `
-            <div class="card-produco"> 
-              <h2>${p.nombreProducto}</h2>
+      const contProductos = document.createElement("div");
+      contProductos.classList.add("cont-productos");
+
+      contenedorProductos.appendChild(contProductos);
+
+      producto.forEach(p => {
+        const contProducto = document.createElement("div");
+        contProducto.classList.add("card-producto");
+
+        contProducto.innerHTML += `
+
+            <img class="card-img"src="assets/img/productos-img/${p.imagen}.jpg" alt="pestañas y cejas"> 
+            <h2>${p.nombreProducto}</h2>
+            <p>$${p.precio}.00 </p>
+            <div>
+              <input type="number" value="1" id="cant-${p.id}">
+              <button type="button" id="id-${p.id}">Agregar</button> 
+                
             </div>
-          `
+
+        `
+        
+        contProductos.appendChild(contProducto);
+        contenedorProductos.style.border = '1px solid #8080805e';
+
+        const btnAgregarCarrito = contProductos.querySelector(`#id-${p.id}`);
+
+        btnAgregarCarrito.addEventListener('click', function() {
+
+          const cantidad = parseInt(contProductos.querySelector(`#cant-${p.id}`).value);
           
-          console.log(p.categoria)
-          
-          contenedorProductos.appendChild(contProducto);
-          contenedorProductos.style.border = '1px solid #8080805e';
+          if (!isNaN(cantidad) && cantidad > 0) {
+            // Verificar si el producto ya está en el carrito
+            const productoExistente = carrito.some(item => item.id === p.id);
+        
+            productoExistente
+              ? carrito.forEach(item => {
+                  if (item.id === p.id) {
+                    item.cantidad += cantidad;
+                  }
+                })
+              : carrito.push({ ...p, cantidad });
+        
+            console.log(carrito);
+          }
 
         })
+
+      })
       }
+      
+      muestraCategoriasMenu();
       
       muestraCategoriasMenu();
       
@@ -203,3 +282,4 @@ categorias.forEach(prod => {
     })
 
 });
+
