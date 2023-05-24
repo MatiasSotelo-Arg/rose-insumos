@@ -47,6 +47,7 @@
         .cont-productos {
             display: grid;
             grid-template-columns: repeat(2,1fr);
+            overflow-x: hidden;
 
             .card-producto {
                 .card-img {

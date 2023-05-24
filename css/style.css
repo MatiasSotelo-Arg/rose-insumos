@@ -125,7 +125,8 @@ a {
     justify-content: space-around; }
   .contenedor-main .contenedor-productos .cont-productos {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); }
+    grid-template-columns: repeat(2, 1fr);
+    overflow-x: hidden; }
     .contenedor-main .contenedor-productos .cont-productos .card-producto .card-img {
       width: 100%;
       height: 15.625rem; }
