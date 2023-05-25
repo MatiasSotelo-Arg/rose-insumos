@@ -112,7 +112,7 @@ function agregarCategoriasMenu() {
             contProducto.innerHTML += `
 
                 <img class="card-img"src="assets/img/productos-img/${p.imagen}.jpg" alt="pestañas y cejas"> 
-                <h2>${p.nombreProducto}</h2>
+                <h2 class="card-titulo">${p.nombreProducto}</h2>
                 <p>$${p.precio}.00 </p>
                 <div>
                   <input type="number" value="1" id="cant-${p.id}">
@@ -125,6 +125,7 @@ function agregarCategoriasMenu() {
             contProductos.appendChild(contProducto);
             contenedorProductos.style.border = '1px solid #8080805e';
 
+            // Agarrar producto al
             const btnAgregarCarrito = contProductos.querySelector(`#id-${p.id}`);
 
             btnAgregarCarrito.addEventListener('click', function() {
@@ -146,6 +147,14 @@ function agregarCategoriasMenu() {
                 console.log(carrito);
               }
 
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Producto Agregado!',
+                showConfirmButton: false,
+                timer: 700
+              })
+              
             })
 
           })
@@ -190,53 +199,57 @@ categorias.forEach(prod => {
 
       const x = funcionalidadHamburguesa();
 
-      // agregaProductosCategoria
-      function agregarProductosCategoria () {
-        let codificarCategoria = categorias[prod.id].categoria;
+       // agregaProductosCategoria
+       let contadorID = 0; 
 
-        const mostrarProductos = catalogo.filter(prod => prod.categoria ===  codificarCategoria)
+       function agregarProductosCategoria() {
+         let codificarCategoria = categorias[prod.id].categoria;
+       
+         const mostrarProductos = catalogo.filter(prod => prod.categoria === codificarCategoria);
+       
+         console.log(`click ${prod.id}`);
+       
+         // Asignar un ID único a los productos filtrados
+         const productosConID = mostrarProductos.map(prod => ({ ...prod, id: contadorID++ }));
+       
+         return productosConID;
+       }
+       
+       const producto = agregarProductosCategoria();
 
-        console.log(`click ${prod.id}`)
+       // crea cabecera categoria 
+       const headerCategoDom = document.createElement("div");
+       headerCategoDom.classList.add("cont-categoria");
+       headerCategoDom.innerHTML = `
+         <h2>${prod.categoria}</h2>
+         <button class="btn-cerrar-categoria" type="button">X</button>
+       `
+       contenedorProductos.appendChild(headerCategoDom);
+       
+       //muestra los productos en el dom
+       function muestraCategoriasMenu() {} {
 
-        return mostrarProductos;
-      }
-      
-      const producto = agregarProductosCategoria();
+         const contProductos = document.createElement("div");
+         contProductos.classList.add("cont-productos");
 
-      // crea cabecera categoria 
-      const headerCategoDom = document.createElement("div");
-      headerCategoDom.classList.add("cont-categoria");
-      headerCategoDom.innerHTML = `
-        <h2>${prod.categoria}</h2>
-        <button class="btn-cerrar-categoria" type="button">X</button>
-      `
-      contenedorProductos.appendChild(headerCategoDom);
-      
-  
-      //muestra los productos en el dom
-      function muestraCategoriasMenu() {} {
+         contenedorProductos.appendChild(contProductos);
 
-      const contProductos = document.createElement("div");
-      contProductos.classList.add("cont-productos");
+         producto.forEach(p => {
+           const contProducto = document.createElement("div");
+           contProducto.classList.add("card-producto");
 
-      contenedorProductos.appendChild(contProductos);
+           contProducto.innerHTML += `
 
-      producto.forEach(p => {
-        const contProducto = document.createElement("div");
-        contProducto.classList.add("card-producto");
+               <img class="card-img"src="assets/img/productos-img/${p.imagen}.jpg" alt="pestañas y cejas"> 
+               <h2 class="card-titulo">${p.nombreProducto}</h2>
+               <p>$${p.precio}.00 </p>
+               <div>
+                 <input type="number" value="1" id="cant-${p.id}">
+                 <button type="button" id="id-${p.id}">Agregar</button> 
+                  
+               </div>
 
-        contProducto.innerHTML += `
-
-            <img class="card-img"src="assets/img/productos-img/${p.imagen}.jpg" alt="pestañas y cejas"> 
-            <h2>${p.nombreProducto}</h2>
-            <p>$${p.precio}.00 </p>
-            <div>
-              <input type="number" value="1" id="cant-${p.id}">
-              <button type="button" id="id-${p.id}">Agregar</button> 
-                
-            </div>
-
-        `
+           `
         
         contProductos.appendChild(contProducto);
         contenedorProductos.style.border = '1px solid #8080805e';
@@ -267,7 +280,6 @@ categorias.forEach(prod => {
       })
       }
       
-      muestraCategoriasMenu();
       
       muestraCategoriasMenu();
       
