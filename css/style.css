@@ -222,3 +222,6 @@ a {
 .card-carrito .card-img-carrito {
   width: 5rem;
   height: 5rem; }
+
+.contenido-carrito {
+  overflow-y: auto; }

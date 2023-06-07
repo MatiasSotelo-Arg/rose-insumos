@@ -1,3 +1,5 @@
+
+
 const carrito = [];
 
 // funcionalidad hamburguesa 
@@ -128,37 +130,39 @@ function agregarCategoriasMenu() {
             contProductos.appendChild(contProducto);
             contenedorProductos.style.border = '1px solid #8080805e';
 
-            // Agarrar producto al
-            const btnAgregarCarrito = contProductos.querySelector(`#id-${p.id}`);
+            agregarCarrito(p)
 
-            btnAgregarCarrito.addEventListener('click', function() {
+            // // Agarrar producto al carrito
+            // const btnAgregarCarrito = contProductos.querySelector(`#id-${p.id}`);
 
-              const cantidad = parseInt(contProductos.querySelector(`#cant-${p.id}`).value);
+            // btnAgregarCarrito.addEventListener('click', function() {
+
+            //   const cantidad = parseInt(contProductos.querySelector(`#cant-${p.id}`).value);
              
-              if (!isNaN(cantidad) && cantidad > 0) {
-                // Verificar si el producto ya está en el carrito
-                const productoExistente = carrito.some(item => item.id === p.id);
+            //   if (!isNaN(cantidad) && cantidad > 0) {
+            //     // Verificar si el producto ya está en el carrito
+            //     const productoExistente = carrito.some(item => item.id === p.id);
             
-                productoExistente
-                  ? carrito.forEach(item => {
-                      if (item.id === p.id) {
-                        item.cantidad += cantidad;
-                      }
-                    })
-                  : carrito.push({ ...p, cantidad });
+            //     productoExistente
+            //       ? carrito.forEach(item => {
+            //           if (item.id === p.id) {
+            //             item.cantidad += cantidad;
+            //           }
+            //         })
+            //       : carrito.push({ ...p, cantidad });
             
-                console.log(carrito);
-              }
+            //     console.log(carrito);
+            //   }
 
-              Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Producto Agregado!',
-                showConfirmButton: false,
-                timer: 700
-              })
+            //   Swal.fire({
+            //     position: 'center',
+            //     icon: 'success',
+            //     title: 'Producto Agregado!',
+            //     showConfirmButton: false,
+            //     timer: 700
+            //   })
               
-            })
+            // })
 
           })
         }
@@ -180,6 +184,7 @@ function agregarCategoriasMenu() {
 
 agregarCategoriasMenu();
 
+// mostrarCategoriasDomPrincipal
 const contCategorias = document.querySelector(".cont-principal-categorias");
 
 categorias.forEach(prod => {
@@ -231,63 +236,34 @@ categorias.forEach(prod => {
        
        //muestra los productos en el dom
        function muestraCategoriasMenu() {} {
+          const contProductos = document.createElement("div");
+          contProductos.classList.add("cont-productos");
 
-         const contProductos = document.createElement("div");
-         contProductos.classList.add("cont-productos");
+          contenedorProductos.appendChild(contProductos);
 
-         contenedorProductos.appendChild(contProductos);
+          producto.forEach(p => {
+            const contProducto = document.createElement("div");
+            contProducto.classList.add("card-producto");
 
-         producto.forEach(p => {
-           const contProducto = document.createElement("div");
-           contProducto.classList.add("card-producto");
+            contProducto.innerHTML += `
 
-           contProducto.innerHTML += `
+                <img class="card-img"src="assets/img/productos-img/${p.imagen}.jpg" alt="pestañas y cejas"> 
+                <h2 class="card-titulo">${p.nombreProducto}</h2>
+                <p>$${p.precio}.00 </p>
+                <div>
+                  <input type="number" value="1" id="cant-${p.id}">
+                  <button type="button" id="id-${p.id}">Agregar</button> 
+                    
+                </div>
 
-               <img class="card-img"src="assets/img/productos-img/${p.imagen}.jpg" alt="pestañas y cejas"> 
-               <h2 class="card-titulo">${p.nombreProducto}</h2>
-               <p>$${p.precio}.00 </p>
-               <div>
-                 <input type="number" value="1" id="cant-${p.id}">
-                 <button type="button" id="id-${p.id}">Agregar</button> 
-                  
-               </div>
+            `
 
-           `
-        
-        contProductos.appendChild(contProducto);
-        contenedorProductos.style.border = '1px solid #8080805e';
-
-        const btnAgregarCarrito = contProductos.querySelector(`#id-${p.id}`);
-
-        btnAgregarCarrito.addEventListener('click', function() {
-
-          const cantidad = parseInt(contProductos.querySelector(`#cant-${p.id}`).value);
-
-          const productoExistente = carrito.find(item => item.nombreProducto === p.nombreProducto);    
-
-          if (productoExistente) {
-          
-            productoExistente.cantidad =+ cantidad;
-          } else {
-            carrito.push({ ...p, cantidad });
-          }
-        
-          console.log(carrito);
-
-           Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Producto Agregado!',
-                showConfirmButton: false,
-                timer: 700
-              })
-              
-        });
-        
-
-      })
+            contProductos.appendChild(contProducto);
+            contenedorProductos.style.border = '1px solid #8080805e';
+            
+            agregarCarrito(p);
+          })
       }
-      
       
       muestraCategoriasMenu();
       
@@ -302,76 +278,5 @@ categorias.forEach(prod => {
     })
 
 });
-
-// <!-- <div class="header-carrito">
-// <h3>Carrito</h3> 
-// <button class="btn-cerrar-carrito">x</button>
-// </div>
-
-
-// mostrarPedidoEnDom
-const contPedido = document.querySelector("#btn-carrito");
-const contenedorPedido = document.querySelector(".contenido-carrito");
-  
-
-contPedido.addEventListener("click", function(){
-  contenedorPedido.style.display = "block";
-
-  // crea cabecera categoria 
-  const headerCategoDom = document.createElement("div");
-  headerCategoDom.classList.add("header-carrito");
-  headerCategoDom.innerHTML = `
-    <h3>Pedido</h3>
-    <button class="btn-cerrar-carrito" type="button">X</button>
-  `
-  
-  contenedorPedido.appendChild(headerCategoDom);
-
-  // Mostrar pedido en carrito
-  carrito.forEach(prod => {
-
-    const cardPedido = document.createElement("div");
-    cardPedido.classList.add("card-carrito", prod.id);
-  
-    let precioTotal = prod.precio * prod.cantidad;
-
-    cardPedido.innerHTML = `
-      <img class="card-img-carrito" src="assets/img/productos-img/${prod.imagen}.jpg" alt="${prod.nombreProducto}">
-        <h2>${prod.nombreProducto}</h2>
-        <strong>${prod.cantidad} x $${precioTotal}</strong>
-      <input id="id-${prod.id}" type="submit" value="X" class="btnXPedido">
-    `;
-  
-    const btnSacarPedido = cardPedido.querySelector(`#id-${prod.id}`);
-  
-    // ...
-
-// btn cerrar
-btnSacarPedido.addEventListener('click', function() {
-  const indice = carrito.findIndex(elemento => elemento.id === prod.id);
-  if (indice !== -1) {
-    carrito.splice(indice, 1);
-    console.log(`Elemento con ID ${prod.id} eliminado del pedido.`);
-
-    // Eliminar el elemento del DOM
-    cardPedido.remove();
-  }
-});
-
-// ...
-
-  
-    contenedorPedido.appendChild(cardPedido);
-
-  });
-
-  // btnCerrar
-const btnCerrar = document.querySelector(".btn-cerrar-carrito");
-
-btnCerrar.addEventListener("click", function(){
-  contenedorPedido.innerHTML = '';
-  contenedorPedido.style.display = "none"
-})
-})
 
 
