@@ -1,0 +1,40 @@
+.card-carrito {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
+    .card-img-carrito {
+      flex: 0 0 auto;
+      margin-right: 10px;
+  
+      img {
+        width: 5rem;
+        height: 5rem;
+      }
+    }
+  
+    .card-info {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      
+      h2 {
+        margin: 0;
+      }
+  
+      .btnXPedido {
+        flex: 0 0 auto;
+        padding: 5px 10px;
+        background-color: #ccc;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+  

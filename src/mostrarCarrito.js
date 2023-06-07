@@ -27,10 +27,16 @@ contPedido.addEventListener("click", function(){
     let precioTotal = prod.precio * prod.cantidad;
 
     cardPedido.innerHTML = `
-      <img class="card-img-carrito" src="assets/img/productos-img/${prod.imagen}.jpg" alt="${prod.nombreProducto}">
-        <h2>${prod.nombreProducto}</h2>
-        <strong>${prod.cantidad} x $${precioTotal}</strong>
-      <input id="id-${prod.id}" type="submit" value="X" class="btnXPedido">
+      <div class="card-img-carrito">
+        <img src="assets/img/productos-img/${prod.imagen}.jpg" alt="${prod.nombreProducto}">
+      </div>
+      <div class="card-info">
+          <div>
+            <h2>${prod.nombreProducto}</h2>
+            <strong>${prod.cantidad} x $${precioTotal}</strong> 
+          </div>
+          <input id="id-${prod.id}" type="submit" value="X" class="btnXPedido">
+      </div>
     `;
   
     const btnSacarPedido = cardPedido.querySelector(`#id-${prod.id}`);
