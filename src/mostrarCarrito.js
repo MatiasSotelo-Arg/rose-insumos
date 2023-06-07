@@ -16,6 +16,8 @@ contPedido.addEventListener("click", function(){
   
   contenedorPedido.appendChild(headerCategoDom);
 
+  carritoVacio();
+  
   // Mostrar pedido en carrito
   carrito.forEach(prod => {
 
@@ -33,22 +35,18 @@ contPedido.addEventListener("click", function(){
   
     const btnSacarPedido = cardPedido.querySelector(`#id-${prod.id}`);
   
-    // ...
 
-// btn cerrar
-btnSacarPedido.addEventListener('click', function() {
-  const indice = carrito.findIndex(elemento => elemento.id === prod.id);
-  if (indice !== -1) {
-    carrito.splice(indice, 1);
-    console.log(`Elemento con ID ${prod.id} eliminado del pedido.`);
+  // btn cerrar
+  btnSacarPedido.addEventListener('click', function() {
+    const indice = carrito.findIndex(elemento => elemento.id === prod.id);
+    if (indice !== -1) {
+      carrito.splice(indice, 1);
+      console.log(`Elemento con ID ${prod.id} eliminado del pedido.`);
 
-    // Eliminar el elemento del DOM
-    cardPedido.remove();
-  }
-});
-
-// ...
-
+      // Eliminar el elemento del DOM
+      cardPedido.remove();
+    }
+  });
   
     contenedorPedido.appendChild(cardPedido);
 
@@ -62,5 +60,4 @@ btnCerrar.addEventListener("click", function(){
   contenedorPedido.style.display = "none"
 })
 })
-
 

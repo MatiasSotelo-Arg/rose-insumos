@@ -33,3 +33,4 @@ function agregarCarrito (p) {
       
     })
 }
+
