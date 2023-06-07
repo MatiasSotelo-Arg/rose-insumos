@@ -12,7 +12,7 @@
     .header-hamburguesa, .header-carrito {
         display: flex;
         font-size: 1.3rem;
-        .btn-cerrar-hambur {
+        .btn-cerrar-hambur, .btn-cerrar-carrito {
             background-color: transparent;
             color: $color-header;
             // padding: 0.1rem 0.5rem;
@@ -61,6 +61,29 @@
             }
         }
     }
+
+    .contenido-carrito {
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        height: 100vh;
+        width: 100vw;
+        background-color: white;
+        border-right: 1px solid #8080805e;
+        flex-direction: column;
+            .header-carrito {
+                justify-content: space-between;
+                padding: 1rem;
+                border-bottom: 1px solid #8080805e;
+                width: 100%;
+                height: 3.5rem;
+            }
+            .carrito-card_img {
+                width: 5rem;
+                height: 5rem;
+            }
+    }
+
 
     .contenedor-logo {
         color: $letra-header;

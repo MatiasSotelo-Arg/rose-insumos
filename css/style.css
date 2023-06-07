@@ -46,7 +46,7 @@ a {
   .contenedor-header .header-hamburguesa, .contenedor-header .header-carrito {
     display: flex;
     font-size: 1.3rem; }
-    .contenedor-header .header-hamburguesa .btn-cerrar-hambur, .contenedor-header .header-carrito .btn-cerrar-hambur {
+    .contenedor-header .header-hamburguesa .btn-cerrar-hambur, .contenedor-header .header-hamburguesa .btn-cerrar-carrito, .contenedor-header .header-carrito .btn-cerrar-hambur, .contenedor-header .header-carrito .btn-cerrar-carrito {
       background-color: transparent;
       color: #da809a;
       border-radius: 50%;
@@ -83,6 +83,24 @@ a {
           font-size: 1.2rem;
           color: black;
           font-weight: bold; }
+  .contenedor-header .contenido-carrito {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    border-right: 1px solid #8080805e;
+    flex-direction: column; }
+    .contenedor-header .contenido-carrito .header-carrito {
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid #8080805e;
+      width: 100%;
+      height: 3.5rem; }
+    .contenedor-header .contenido-carrito .carrito-card_img {
+      width: 5rem;
+      height: 5rem; }
   .contenedor-header .contenedor-logo {
     color: #edcfc3; }
     .contenedor-header .contenedor-logo .logo-img {
@@ -200,3 +218,7 @@ a {
     width: 30%;
     padding: 0.5rem;
     border-radius: 10px; }
+
+.card-carrito .card-img-carrito {
+  width: 5rem;
+  height: 5rem; }

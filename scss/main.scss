@@ -60,7 +60,6 @@
         }
 
         .cont-productos {
-
             .card-producto {
                 margin: 2rem 1rem;
                 padding-bottom: 2rem;
@@ -99,8 +98,6 @@
                 
             }
         }
-
-       
     }
 
     .cont-principal-categorias {
@@ -143,5 +140,12 @@
                 border-radius: 10px;
             }
         }
+    }  
+}
+
+.card-carrito {
+    .card-img-carrito {
+        width: 5rem;
+        height: 5rem;
     }
 }
