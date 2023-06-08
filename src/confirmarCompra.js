@@ -23,10 +23,12 @@ function detalleCompra(btnConfirmar) {
             mensajeDetalle = "";
 
         carrito.forEach(prod => {
-            mensajeDetalle += `${prod.nombreProducto}%0A${prod.cantidad} x $${prod.precio} - subTotal: $${prod.precioTotal}%0A%0A`;
+            mensajeDetalle += `*${prod.nombreProducto}*%0A${prod.cantidad} x $${prod.precio} - subTotal: $${prod.precioTotal}%0A%0A`;
         });
 
-        mensajeCompleto = `${mensajeSaludo}${mensajeDetalle}`;
+        const obtenerTotal = obtenerTotalCarrito()
+
+        mensajeCompleto = `${mensajeSaludo}${mensajeDetalle}%0A%0ATotal: $${obtenerTotal}`;
 
         console.log(mensajeCompleto);
 
@@ -53,6 +55,11 @@ function detalleCompra(btnConfirmar) {
     });
 }
 
+function obtenerTotalCarrito() {
+    return totalCarrito = carrito.reduce((acumulador, elemento) => {
+        return acumulador + elemento.precioTotal;
+    }, 0);
+}
 
 
 
