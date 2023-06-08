@@ -23,7 +23,7 @@ function detalleCompra(btnConfirmar) {
             mensajeDetalle = "";
 
         carrito.forEach(prod => {
-            mensajeDetalle += `${prod.nombreProducto}\n${prod.cantidad} x $${prod.precio} - subTotal: $${prod.precioTotal}%0A%0A`;
+            mensajeDetalle += `${prod.nombreProducto}%0A${prod.cantidad} x $${prod.precio} - subTotal: $${prod.precioTotal}%0A%0A`;
         });
 
         mensajeCompleto = `${mensajeSaludo}${mensajeDetalle}`;
@@ -44,6 +44,7 @@ function detalleCompra(btnConfirmar) {
         if (mensajeEnviado) { // Verificar si el mensaje aún no se ha enviado
 
               setTimeout(() => {
+                btnConfirmar.target = "_blank"
                 btnConfirmar.href = `https://api.whatsapp.com/send?phone=+549379480-1475&text=${mensajeCompleto}`;
                 btnConfirmar.click()
               },700)
