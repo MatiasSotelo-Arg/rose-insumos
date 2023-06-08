@@ -12,13 +12,17 @@ function agregarCarrito (p) {
         // Verificar si el producto ya está en el carrito
         const productoExistente = carrito.some(item => item.nombreProducto === p.nombreProducto);
     
+         // Calcular precio total
+        const precioTotal = cantidad * p.precio;
+
         productoExistente
           ? carrito.forEach(item => {
               if (item.nombreProducto === p.nombreProducto) {
                 item.cantidad += cantidad;
+                item.precioTotal += precioTotal;
               }
             })
-          : carrito.push({ ...p, cantidad });
+          : carrito.push({ ...p, cantidad, precioTotal });
     
         console.log(carrito);
       }

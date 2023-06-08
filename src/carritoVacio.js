@@ -4,7 +4,7 @@ function carritoVacio() {
   const carritoVacio = document.createElement("div");
 
   if(carrito.length === 0) {
-    carritoVacio.innerHTML = `<div>
+    carritoVacio.innerHTML = `<div class="carrito-vacio">
                                 <h2>Carrito Vacio!</h2>
                                 <a class="btnAgregar" href="#index.html">Agregar productos</a>
                               </div>`

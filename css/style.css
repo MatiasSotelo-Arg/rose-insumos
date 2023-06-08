@@ -250,3 +250,11 @@ a {
       color: #fff;
       border: none;
       cursor: pointer; }
+
+.carrito-vacio {
+  text-align: center;
+  height: 90vh;
+  margin-top: 40vh; }
+
+.totalCarrito {
+  text-align: center; }
