@@ -99,7 +99,7 @@ function confirmarCompra() {
 
             setTimeout(() => {
                 btnConfirmarCompra.target = "_blank";
-                btnConfirmarCompra.href = `https://api.whatsapp.com/send?phone=+549379480-1475&text=${mensajeCompleto}`;
+                btnConfirmarCompra.href = `https://api.whatsapp.com/send?phone=+549379439-3231&text=${mensajeCompleto}`;
                 btnConfirmarCompra.click();
             }, 700);
         }
