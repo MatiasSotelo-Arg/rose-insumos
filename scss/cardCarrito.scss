@@ -41,9 +41,13 @@
   .carrito-vacio {
     text-align: center;
     height: 90vh;
-    margin-top: 40vh;
+    padding-top: 40vh;
   }
   
   .totalCarrito {
     text-align: center;
   }
+
+  .contenido-carrito {
+    overflow-y: auto;
+}

@@ -15,8 +15,6 @@ contPedido.addEventListener("click", function(){
   `
   
   contenedorPedido.appendChild(headerCategoDom);
-
-  carritoVacio();
   
   // Mostrar pedido en carrito
   carrito.forEach(prod => {
