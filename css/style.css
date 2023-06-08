@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Hind", sans-serif; }
+  font-family: 'Alegreya Sans SC', sans-serif; }
 
 a {
   text-decoration: none; }
@@ -109,7 +109,8 @@ a {
 .contenedor-main .contenedor-info {
   display: flex;
   width: auto;
-  margin: 1rem; }
+  margin: 1rem;
+  margin-top: 2.5rem; }
   .contenedor-main .contenedor-info img {
     width: 40vw; }
   .contenedor-main .contenedor-info .titulo-info {
@@ -124,8 +125,13 @@ a {
       color: #da809a;
       font-size: 1.3rem; }
 
+.contenedor-main .contenedor-ubicacion .titulo-ubicacion {
+  margin-bottom: 1rem;
+  text-transform: uppercase; }
+
 .contenedor-main .contenedor-ubicacion .ubicacion {
   margin: 0px 1rem;
+  margin-bottom: 1rem;
   height: 30vh; }
 
 .contenedor-main .contenedor-ubicacion .titulo-ubicacion {
@@ -225,7 +231,7 @@ a {
   justify-content: space-between;
   border: 1px solid #ccc;
   padding: 10px;
-  margin: 10px 5px;
+  margin: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
   .card-carrito .card-img-carrito {
     flex: 0 0 auto;
@@ -237,7 +243,8 @@ a {
     flex: 1 1 auto;
     display: flex;
     align-items: center;
-    justify-content: space-between; }
+    justify-content: space-between;
+    text-align: start; }
     .card-carrito .card-info h2 {
       margin: 0; }
     .card-carrito .card-info .btnXPedido {
@@ -254,7 +261,16 @@ a {
   padding-top: 40vh; }
 
 .totalCarrito {
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 1.2rem; }
 
 .contenido-carrito {
-  overflow-y: auto; }
+  overflow-y: auto;
+  text-align: center; }
+
+.confirmar-compra {
+  color: white;
+  background-color: #da809a;
+  border: none;
+  padding: 1rem 0.5rem;
+  text-transform: uppercase; }

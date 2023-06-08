@@ -83,7 +83,7 @@ function confirmarCompra() {
 
             const obtenerTotal = obtenerTotalCarrito();
 
-            mensajeCompleto = `${mensajeSaludo}${mensajeDetalle}%0A%0ATotal: $${obtenerTotal}`;
+            mensajeCompleto = `${mensajeSaludo}${mensajeDetalle}Total: $${obtenerTotal}`;
 
             console.log(mensajeCompleto);
 
