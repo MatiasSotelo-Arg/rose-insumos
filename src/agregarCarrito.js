@@ -25,6 +25,7 @@ function agregarCarrito (p) {
           : carrito.push({ ...p, cantidad, precioTotal });
     
         console.log(carrito);
+  
       }
 
       Swal.fire({
